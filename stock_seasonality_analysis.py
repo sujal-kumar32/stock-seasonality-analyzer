@@ -105,7 +105,10 @@ def run_analysis():
         # -------- SAVE EXCEL --------
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         filename = f"stock_seasonality_results_{timestamp}.xlsx"
-        save_path = os.path.join(os.getcwd(), filename)
+        # Save to user's Documents folder (safe & permission-free)
+        documents_path = os.path.join(os.path.expanduser("~"), "Documents")
+        save_path = os.path.join(documents_path, filename)
+
 
         with pd.ExcelWriter(save_path, engine="openpyxl") as writer:
             df.to_excel(writer, sheet_name="Seasonality", index=True)
