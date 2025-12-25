@@ -28,13 +28,7 @@ jobs:
 
       - name: Build EXE with PyInstaller
         run: |
-          pyinstaller ^
-            --onefile ^
-            --noconsole ^
-            --name StockSeasonalityAnalyzer ^
-            --hidden-import=openpyxl ^
-            --collect-all openpyxl ^
-            stock_seasonality_analysis.py
+          pyinstaller --onefile --noconsole --name StockSeasonalityAnalyzer --hidden-import=openpyxl --collect-all openpyxl stock_seasonality_analysis.py
 
       - name: Upload EXE to Release
         uses: softprops/action-gh-release@v2
